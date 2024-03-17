@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>History of MS-DOS</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: "Courier New", Courier, monospace;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            background-color: #FDF4DC;
+            color: #333;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        body.dark-mode {
+            background-color: #101820;
+            color: white;
+        }
+
+        .container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .text {
+            flex: 1;
+            padding-left: 20px;
+            font-size: 40px;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        .title {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 80px;
+        }
+
+        .bottom-paragraph {
+            text-align: center;
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
+
+        .dark-mode-container {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .dark-mode-switch {
+            font-size: 60px;
+            cursor: pointer;
+            color: #666;
+            margin-bottom: 5px;
+            transition: transform 0.3s, color 0.3s;
+        }
+
+        .dark-mode-switch:hover {
+            color: #000;
+            transform: scale(1.2);
+        }
+
+        .dark-mode-label {
+            font-size: 24px; 
+            color: #666; 
+        }
+
+        .button-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .bottom-button {
+            background-color:  #292c2f;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px; 
+            font-size: 30px; 
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .bottom-button:hover {
+            background-color: #a38e52;
+        }
+
+        
+        .return-button {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            padding: 10px 20px;
+            background-color: #292c2f;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 30px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .return-button:hover {
+            background-color: #a38e52;
+        }
+        @media only screen and (max-width: 768px) {
+    body {
+        padding: 10px;
+        overflow-y: auto;
+    }
+
+    .container {
+        flex-direction: column;
+    }
+
+    .text {
+        font-size: 24px;
+        padding-left: 0;
+        text-align: center;
+    }
+
+    img {
+        max-width: 100%;
+        margin: 20px auto;
+    }
+
+    .title {
+        font-size: 60px;
+        margin-top: 10px;
+    }
+
+    .bottom-paragraph {
+        font-size: 24px;
+    }
+
+    .dark-mode-container {
+        position: static;
+        margin-top: 10px;
+        text-align: center;
+    }
+
+    .return-button {
+        position: static;
+        margin: 10px auto;
+        display: block;
+    }
+
+    .button-container {
+        text-align: center;
+        margin-bottom: 10px;
+    }
+}
+
+    </style>
+</head>
+<body class="light-mode">
+    
+    <button class="return-button" onclick="goToPreviousPage()">Return</button>
+
+    <div class="dark-mode-container">
+        <div class="dark-mode-switch" onclick="toggleDarkMode()">🌙</div>
+        <div class="dark-mode-label">Switch Mode</div>
+    </div>
+
+    <div class="title">
+        <h1>History of MS-DOS</h1>
+    </div>
+    <div class="container">
+        <div class="text">
+            <p>Created in response to a need in the early 1980s, MS-DOS transformed personal computing through its simplicity
+                and functionality. Created by Bill Gates and Paul Allen, the software originated from their purchase of
+                86-DOS, a disk operating system made by Seattle Computer Products. This crucial purchase enabled Microsoft
+                to adapt the system to meet IBM's needs for their inaugural personal computer, the IBM PC. MS-DOS rapidly
+                became the dominant operating system for IBM-compatible computers, strengthening Microsoft's position in
+                the software industry. Its command-line interface and disk management functionalities defined the way users
+                engaged with computers, influencing the course of computing in the following decades.</p>
+        </div>
+        <img src="BillGates.jpg" alt="MS-DOS image">
+    </div>
+    <div class="container">
+        <img src="microsoft.jpg" alt="New image" style="max-width: 100%; height: auto;">
+        <div class="text">
+            <p>The impact of MS-DOS cannot be denied,
+                as it was essential in the development of
+                personal computing. Microsoft's dominant
+                position was secured by its broad
+                acceptance and ability to work with various
+                hardware and software, setting the stage
+                for future achievements. Despite the rise
+                of graphical user interfaces, MS-DOS
+                continued to be significant, continuously
+                updating with new features to stay
+                competitive in the industry</p>
+        </div>
+    </div>
+    <div class="bottom-paragraph">
+        <p>Today, even though it is no longer actively developed or widely
+            used, MS-DOS is still cherished by computing enthusiasts and
+            historians. The impact of MS-DOS can still be observed in presentday operating systems, as ideas and instructions from it continue
+            to exist in command-line interfaces and file arrangements. Even
+            though it is no longer in use, MS-DOS is still a significant element
+            in the history of computing, valued for its impact on the
+            technology we rely on today.</p>
+    </div>
+    <div class="button-container">
+        <button class="bottom-button" onclick="goToAnotherPage()">Learn Commands</button>
+    </div>
+    <script>
+        function toggleDarkMode() {
+            const body = document.body;
+            body.classList.toggle("dark-mode");
+        }
+
+        function goToAnotherPage() {
+            window.location.href = 'prompt.html';
+        }
+
+        function goToPreviousPage() {
+            
+            window.location.href = 'introduction.html';
+        }
+    </script>
+</body>
+</html>

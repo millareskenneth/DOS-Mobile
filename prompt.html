@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CMD Interface</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: "Courier New", Courier, monospace;
+            font-size: 20px;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 100vh;
+        }
+
+        .prompt {
+            color: lime;
+            margin-bottom: 10px;
+            text-align: center;
+            font-size: 40px;
+            width: 100%;
+        }
+
+        .commands-table {
+            width: 80%;
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+
+        .commands-table th,
+        .commands-table td {
+            border: 1px solid #555;
+            padding: 8px;
+            text-align: left;
+        }
+
+        .commands-table th {
+            background-color: #333;
+            color: lime;
+        }
+
+        .open-cmd-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: lime;
+            color: black;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+        .return-button {
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            padding: 10px 20px;
+            background-color: #a38e52;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 15px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            text-decoration: none; 
+        }
+        .return-button:hover {
+            background-color: #292c2f;
+        }
+        @media only screen and (max-width: 768px) {
+    body {
+        padding: 10px;
+        overflow-y: auto;
+    }
+
+    .container {
+        flex-direction: column;
+    }
+
+    .text {
+        font-size: 24px;
+        padding-left: 0;
+        text-align: center;
+    }
+
+    img {
+        max-width: 100%;
+        margin: 20px auto;
+    }
+
+    .title {
+        font-size: 60px;
+        margin-top: 10px;
+    }
+
+    .bottom-paragraph {
+        font-size: 24px;
+    }
+
+    .dark-mode-container {
+        position: static;
+        margin-top: 10px;
+        text-align: center;
+    }
+
+    .return-button {
+        position: static;
+        margin: 10px auto;
+        display: block;
+    }
+
+    .button-container {
+        text-align: center;
+        margin-bottom: 10px;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <button class="return-button" onclick="goToPreviousPage()">Return</button>
+    <div class="prompt">MS-DOS Commands<br>(c) 2024 Microsoft Corporation. All rights reserved.</div>
+
+    <table class="commands-table">
+        <tr>
+            <th>Command</th>
+            <th>Attribute</th>
+            <th>Example</th>
+        </tr>
+        <tr>
+            <td>DIR</td>
+            <td>
+                - /A: Displays files with specified attributes.<br>
+                - /S: Displays files in the specified directory and all subdirectories.<br>
+                - /B: Uses bare format (no heading information or summary).
+            </td>
+            <td>C:\>dir /S /A:H</td>
+        </tr>
+        <tr>
+            <td>CD</td>
+            <td>
+                - /D: Changes the drive as well as the directory.
+            </td>
+            <td>C:\>cd /D D:\Documents</td>
+        </tr>
+        <tr>
+            <td>MD</td>
+            <td>No attributes.</td>
+            <td>md NewFolder (creates a new folder named NewFolder).</td>
+        </tr>
+        <tr>
+            <td>COPY</td>
+            <td>
+                - /Y: Suppresses prompting to confirm that you want to overwrite an existing destination file.<br>
+                - /Z: Copies files in restartable mode.
+            </td>
+            <td>C:\>copy /Y file1.txt D:\Backup</td>
+        </tr>
+        <tr>
+            <td>DEL</td>
+            <td>
+                - /F: Force deletes read-only files.<br>
+                - /Q: Quiet mode, do not ask if ok to delete on global wildcard.
+            </td>
+            <td>del file1.txt (deletes file1.txt).</td>
+        </tr>
+        <tr>
+            <td>REN</td>
+            <td>No attributes.</td>
+            <td>ren oldfile.txt newfile.txt (renames oldfile.txt to newfile.txt).</td>
+        </tr>
+        <tr>
+            <td>TYPE</td>
+            <td>No attributes.</td>
+            <td>type file.txt (displays the contents of file.txt).</td>
+        </tr>
+        <tr>
+            <td>CLS</td>
+            <td>No attributes.</td>
+            <td>cls (clears the screen).</td>
+        </tr>
+        <tr>
+            <td>DATE</td>
+            <td>No attributes.</td>
+            <td>date (displays the current date) or date 02-24-2024 (sets the date to February 24, 2024).</td>
+        </tr>
+        <tr>
+            <td>TIME</td>
+            <td>No attributes.</td>
+            <td>time (displays the current time) or time 14:30 (sets the time to 2:30 PM).</td>
+        </tr>
+        <tr>
+            <td>ECHO</td>
+            <td>
+                - /E: Enables command extensions.<br>
+                - /S: Copies directories and subdirectories except empty ones.
+            </td>
+            <td>echo Hello, World! (displays "Hello, World!").<br>C:\>echo /E /S "Hello, World!"</td>
+        </tr>
+        <tr>
+            <td>FIND</td>
+            <td>
+                - /C: Displays only the count of lines containing the string.<br>
+                - /I: Ignores the case of characters when searching for the string.
+            </td>
+            <td>find "keyword" file.txt (searches for "keyword" in file.txt).<br>C:\>find /C /I "keyword" file.txt</td>
+        </tr>
+        <tr>
+            <td>SORT</td>
+            <td>No attributes.</td>
+            <td>sort file.txt (sorts the contents of file.txt alphabetically).</td>
+        </tr>
+        <tr>
+            <td>PING</td>
+            <td>
+                - /T: Ping the specified host until stopped.<br>
+                - /n: Number of echo requests to send.
+            </td>
+            <td>ping www.example.com (pings the website www.example.com).<br>C:\>ping /T /n 5 www.example.com</td>
+        </tr>
+        <tr>
+            <td>IPCONFIG</td>
+            <td>
+                - /ALL: Displays full TCP/IP configuration.<br>
+                - /RELEASE: Releases the IP address for the specified adapter.
+            </td>
+            <td>ipconfig (displays network configuration information).<br>C:\>ipconfig /ALL</td>
+        </tr>
+        <tr>
+            <td>NETSTAT</td>
+            <td>No attributes.</td>
+            <td>netstat (displays active TCP connections).</td>
+        </tr>
+        <tr>
+            <td>TASKLIST</td>
+            <td>
+                - /V: Displays verbose task information.<br>
+                - /SVC: Displays services in each process.
+            </td>
+            <td>tasklist (displays a list of running processes).<br>C:\>tasklist /V /SVC</td>
+        </tr>
+        <tr>
+            <td>TASKKILL</td>
+            <td>
+                - /F: Specifies to forcefully terminate the process(es).<br>
+                - /IM: Specifies the image name of the process to be terminated.
+            </td>
+            <td>taskkill /IM notepad.exe (terminates the Notepad process).<br>C:\>taskkill /F /IM notepad.exe</td>
+        </tr>
+        <tr>
+            <td>FORMAT</td>
+            <td>No attributes.</td>
+            <td>format C: (formats the C: drive).</td>
+        </tr>
+        <tr>
+            <td>CHKDSK</td>
+            <td>No attributes.</td>
+            <td>chkdsk C: (checks the integrity of the C: drive).</td>
+        </tr>
+        <tr>
+            <td>TREE</td>
+            <td>
+                - /F: Displays the names of files in each directory.<br>
+                - /A: Specifies how files should be displayed.
+            </td>
+            <td>tree /f (displays the directory structure with files).<br>C:\>tree /F /A</td>
+        </tr>
+        <tr>
+            <td>LABEL</td>
+            <td>No attributes.</td>
+            <td>label D: MyDisk (sets the volume label of the D: drive to MyDisk).</td>
+        </tr>
+        <tr>
+            <td>SHUTDOWN</td>
+            <td>
+                - /S: Shuts down the computer.<br>
+                - /R: Restarts the computer.
+            </td>
+            <td>shutdown /s (shuts down the computer).<br>C:\>shutdown /S /T 0</td>
+        </tr>
+        <tr>
+            <td>ATTRIB</td>
+            <td>
+                - +: Sets an attribute.<br>
+                - -: Clears an attribute.
+            </td>
+            <td>attrib +h file.txt (hides file.txt).<br>C:\>attrib +H file.txt</td>
+        </tr>
+        <tr>
+            <td>SET</td>
+            <td>No specific attributes.</td>
+            <td>set PATH=C:\NewFolder;%PATH% (adds C:\NewFolder to the PATH environment variable).</td>
+        </tr>
+        <tr>
+            <td>RMDIR</td>
+            <td>No attributes.</td>
+            <td>rmdir OldDirectory (removes the directory named OldDirectory).</td>
+        </tr>
+        <tr>
+            <td>MOVE</td>
+            <td>No attributes.</td>
+            <td>move file1.txt C:\NewLocation (moves file1.txt to C:\NewLocation).</td>
+        </tr>
+        <tr>
+            <td>DISKPART</td>
+            <td>Specific attributes.</td>
+            <td>diskpart (launches the DiskPart utility).</td>
+        </tr>
+        <tr>
+            <td>XCOPY</td>
+            <td>
+                - /S: Copies directories and subdirectories except empty ones.<br>
+                - /E: Copies directories and subdirectories, including empty ones.
+            </td>
+            <td>xcopy /s folder1 C:\Backup (copies folder1 and all its subdirectories to the Backup directory).<br>C:\>xcopy /S /E folder1 C:\Backup</td>
+        </tr>
+        <tr>
+            <td>NET</td>
+            <td>No specific attributes.</td>
+            <td>net use X: \\server\share (maps the network share to drive X:).</td>
+        </tr>
+    </table>
+
+    <button class="open-cmd-button" onclick="openCommandPrompt()">Try It Yourself</button>
+
+    <script>
+        function openCommandPrompt() {
+            
+            window.location.href = "cmd.html";
+        }
+        function goToPreviousPage() {
+            
+            window.location.href = 'about_msdos.html';
+        }
+    </script>
+</body>
+</html>

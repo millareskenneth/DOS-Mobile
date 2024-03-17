@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introduction to MS-DOS</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: "Courier New", Courier, monospace;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            position: relative;
+        }
+
+        body.light-mode {
+            background-color:#FDF4DC;
+            color: #333;
+        }
+
+        body.dark-mode {
+            background-color: #101820;
+            color: white;
+        }
+
+        .title {
+            font-size: 150px;
+            display: flex;
+            justify-content: center;
+            overflow: hidden;
+            opacity: 0;
+            animation: fadeInOut 4s infinite;
+            font-family: "Courier New", Courier, monospace;
+        }
+
+        .letter {
+            opacity: 0;
+            animation: fadeInLetters 1s ease-in-out forwards;
+        }
+
+        @keyframes fadeInTitle {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInLetters {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: row;
+            margin-top: 20px;
+            width: 80%;
+        }
+
+        .text {
+            flex: 1;
+            padding: 0 20px;
+            text-align: left;
+            font-size: 40px;
+            opacity: 0;
+            animation: fadeInOut 4s infinite;
+        }
+
+        @keyframes fadeInOut {
+            0%, 70% {
+                opacity: 1;
+            }
+            80%, 90% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        img {
+            max-width: 40%;
+            height: auto;
+            margin-left: 20px;
+            opacity: 0;
+            animation: fadeInOut 4s infinite;
+        }
+
+        .button-container {
+            position: absolute;
+            bottom: 20px;
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            font-size: 21px;
+        }
+
+        .bottom-button {
+            background-color: #292c2f;
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            padding: 20px 40px;
+            font-size: 30px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .bottom-button:hover {
+            background-color: #a38e52;
+        }
+
+        .dark-mode-container {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .dark-mode-switch {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 60px;
+            color: #666;
+            transition: transform 0.3s, color 0.3s;
+            transform: rotate(0deg);
+        }
+
+        .dark-mode-switch:hover {
+            color: #000;
+            transform: rotate(180deg);
+        }
+
+        .dark-mode-label {
+            font-size: 30px;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        
+        @media only screen and (max-width: 768px) {
+    body {
+        padding: 10px;
+        overflow-y: auto;
+    }
+
+    .container {
+        flex-direction: column;
+    }
+
+    .text {
+        font-size: 24px;
+        padding-left: 0;
+        text-align: center;
+    }
+
+    img {
+        max-width: 100%;
+        margin: 20px auto;
+    }
+
+    .title {
+        font-size: 60px;
+        margin-top: 10px;
+    }
+
+    .bottom-paragraph {
+        font-size: 24px;
+    }
+
+    .dark-mode-container {
+        position: static;
+        margin-top: 10px;
+        text-align: center;
+    }
+
+    .return-button {
+        position: static;
+        margin: 10px auto;
+        display: block;
+    }
+
+    .button-container {
+        text-align: center;
+        margin-bottom: 10px;
+    }
+}
+
+
+    </style>
+</head>
+<body class="light-mode">
+    <div class="title">
+        <span class="letter">M</span>
+        <span class="letter">S</span>
+        <span class="letter">-</span>
+        <span class="letter">D</span>
+        <span class="letter">O</span>
+        <span class="letter">S</span>
+    </div>
+    <div class="container">
+        <div class="text">
+            <p>The MS-DOS (Microsoft Disk Operating System) was one of the earliest and most influential operating systems developed by Microsoft. Released in 1981, it served as the foundation for Microsoft's dominance in the personal computer market for many years. MS-DOS introduced a command-line interface (CLI) and a simple way to manage files and directories, laying the groundwork for the modern operating systems we use today.</p>
+        </div>
+        <img src="ms2.png" alt="MS-DOS image">
+    </div>
+    <div class="dark-mode-container">
+        <button class="dark-mode-switch" onclick="toggleMode()">🌙</button>
+        <div class="dark-mode-label">Switch Mode</div>
+    </div>
+    <div class="button-container">
+        <button class="bottom-button" onclick="goToAnotherPage()">Start Learning</button>
+    </div>
+
+    <script>
+        function toggleMode() {
+            const body = document.body;
+            body.classList.toggle('dark-mode');
+            body.classList.toggle('light-mode');
+        }
+
+        function goToAnotherPage() {
+            window.location.href = 'about_msdos.html';
+        }
+
+        const letters = document.querySelectorAll('.letter');
+    </script>
+</body>
+</html>
