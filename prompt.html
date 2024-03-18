@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CMD Interface</title>
     <style>
-        body {
+       body {
             background-color: black;
             color: white;
             font-family: "Courier New", Courier, monospace;
@@ -23,7 +23,7 @@
             color: lime;
             margin-bottom: 10px;
             text-align: center;
-            font-size: 40px;
+            font-size: 5vw;
             width: 100%;
         }
 
@@ -47,24 +47,24 @@
 
         .open-cmd-button {
             margin-top: 20px;
-            padding: 10px 20px;
+            padding: 10px 20px; /* Adjusted padding */
             background-color: lime;
             color: black;
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            font-size: 18px;
+            font-size: 16px; /* Adjusted font size */
         }
         .return-button {
             position: absolute;
-            top: 8px;
-            left: 8px;
-            padding: 10px 20px;
+            top: 10px; /* Adjusted top position */
+            left: 10px; /* Adjusted left position */
+            padding: 10px 20px; /* Adjusted padding */
             background-color: #a38e52;
             color: #fff;
             border: none;
             border-radius: 5px;
-            font-size: 15px;
+            font-size: 14px; /* Adjusted font size */
             cursor: pointer;
             transition: background-color 0.3s ease;
             text-decoration: none; 
@@ -73,57 +73,27 @@
             background-color: #292c2f;
         }
         @media only screen and (max-width: 768px) {
-    body {
-        padding: 10px;
-        overflow-y: auto;
-    }
+            .prompt {
+                font-size: 8vw;
+            }
 
-    .container {
-        flex-direction: column;
-    }
+            .commands-table {
+                width: 100%;
+            }
 
-    .text {
-        font-size: 24px;
-        padding-left: 0;
-        text-align: center;
-    }
-
-    img {
-        max-width: 100%;
-        margin: 20px auto;
-    }
-
-    .title {
-        font-size: 60px;
-        margin-top: 10px;
-    }
-
-    .bottom-paragraph {
-        font-size: 24px;
-    }
-
-    .dark-mode-container {
-        position: static;
-        margin-top: 10px;
-        text-align: center;
-    }
-
-    .return-button {
-        position: static;
-        margin: 10px auto;
-        display: block;
-    }
-
-    .button-container {
-        text-align: center;
-        margin-bottom: 10px;
-    }
-}
-
+            .open-cmd-button {
+                padding: 8px 16px; /* Adjusted padding */
+                font-size: 4.5vw;
+            }
+            .return-button {
+                padding: 8px 16px; /* Adjusted padding */
+                font-size: 4vw;
+            }
+        }
     </style>
 </head>
 <body>
-    <button class="return-button" onclick="goToPreviousPage()">Return</button>
+    <a href="about_msdos.html" class="return-button">Return</a>
     <div class="prompt">MS-DOS Commands<br>(c) 2024 Microsoft Corporation. All rights reserved.</div>
 
     <table class="commands-table">
@@ -330,12 +300,7 @@
 
     <script>
         function openCommandPrompt() {
-            
             window.location.href = "cmd.html";
-        }
-        function goToPreviousPage() {
-            
-            window.location.href = 'about_msdos.html';
         }
     </script>
 </body>
