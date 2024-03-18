@@ -13,42 +13,27 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            min-height: 100vh;
+            min-height: 100vh; /* Ensure full screen height */
             position: relative;
-        }
-
-        body.light-mode {
-            background-color:#FDF4DC;
-            color: #333;
+            background-color: #FDF4DC; /* Light mode background */
+            color: #333; /* Light mode text color */
         }
 
         body.dark-mode {
-            background-color: #101820;
-            color: white;
+            background-color: #101820; /* Dark mode background */
+            color: white; /* Dark mode text color */
         }
 
         .title {
-            font-size: 10vw; 
+            font-size: 10vw; /* Responsive title font size */
             display: flex;
             justify-content: center;
-            overflow: hidden;
-            opacity: 0;
-            animation: fadeInOut 4s infinite;
-            font-family: "Courier New", Courier, monospace;
+            margin-top: 10px; /* Adjust margin */
         }
 
         .letter {
             opacity: 0;
             animation: fadeInLetters 1s ease-in-out forwards;
-        }
-
-        @keyframes fadeInTitle {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
         }
 
         @keyframes fadeInLetters {
@@ -62,49 +47,23 @@
 
         .container {
             display: flex;
-            justify-content: center;
+            flex-direction: column; /* Adjust layout for smaller screens */
             align-items: center;
-            flex-direction: column;
             margin-top: 20px;
-            width: 90%; 
+            width: 80%;
         }
 
         .text {
             padding: 0 20px;
-            text-align: left;
-            font-size: 4vw; 
-            opacity: 0;
-            animation: fadeInOut 4s infinite;
+            text-align: center; /* Center align text */
+            font-size: 4vw; /* Responsive text font size */
+            margin-bottom: 20px; /* Adjust margin */
         }
 
         img {
-            max-width: 100%; 
+            max-width: 80%; /* Adjust image size */
             height: auto;
             margin: 20px 0;
-            opacity: 0;
-            animation: fadeInOut 4s infinite;
-        }
-
-        .button-container {
-            display: flex;
-            justify-content: center;
-            width: 100%;
-            font-size: 4vw; 
-            margin-top: 20px;
-        }
-
-        .bottom-button {
-            background-color: #292c2f;
-            color: #fff;
-            border: none;
-            border-radius: 10px;
-            padding: 2vw 4vw;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        .bottom-button:hover {
-            background-color: #a38e52;
         }
 
         .dark-mode-container {
@@ -120,10 +79,11 @@
             background: none;
             border: none;
             cursor: pointer;
-            font-size: 8vw; 
+            font-size: 8vw; /* Responsive dark mode switch font size */
             color: #666;
             transition: transform 0.3s, color 0.3s;
             transform: rotate(0deg);
+            margin-top: 10px; /* Adjust margin */
         }
 
         .dark-mode-switch:hover {
@@ -131,36 +91,43 @@
             transform: rotate(180deg);
         }
 
-        .dark-mode-label {
-            font-size: 4vw;
-            color: #666;
-            margin-top: 1vw; 
+        .button-container {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .bottom-button {
+            background-color: #292c2f;
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            padding: 2vw 4vw; /* Responsive button padding */
+            font-size: 4vw; /* Responsive button font size */
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .bottom-button:hover {
+            background-color: #a38e52;
         }
 
         @media only screen and (max-width: 768px) {
             .title {
-                font-size: 20vw; 
+                font-size: 8vw; /* Adjust title font size */
             }
 
             .text {
-                font-size: 6vw; 
+                font-size: 6vw; /* Adjust text font size */
             }
 
             img {
-                max-width: 90%; 
-            }
-
-            .bottom-button {
-                padding: 3vw 5vw; 
+                max-width: 90%; /* Adjust image size */
             }
 
             .dark-mode-switch {
-                font-size: 10vw; 
-            }
-
-            .dark-mode-label {
-                font-size: 5vw; 
-                margin-top: 2vw; 
+                font-size: 10vw; /* Adjust dark mode switch font size */
             }
         }
     </style>
@@ -192,14 +159,11 @@
         function toggleMode() {
             const body = document.body;
             body.classList.toggle('dark-mode');
-            body.classList.toggle('light-mode');
         }
 
         function goToAnotherPage() {
             window.location.href = 'about_msdos.html';
         }
-
-        const letters = document.querySelectorAll('.letter');
     </script>
 </body>
 </html>
